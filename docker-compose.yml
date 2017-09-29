@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  streaming-api:
+    container_name: openvidu-tutorial
+    image: flexconstructor/openvidu-tutorial
+    build: .
+    ports:
+      - "8081:8081"

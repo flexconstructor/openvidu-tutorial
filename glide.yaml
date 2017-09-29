@@ -1,0 +1,12 @@
+package: github.com/flexconstructor/openvidu-tutorial
+import:
+- package: github.com/gin-gonic/gin
+  version: ^1.2
+
+testImport:
+- package: github.com/alecthomas/gometalinter
+  version: ^1.x
+- package: github.com/yookoala/realpath
+- package: github.com/go-playground/overalls
+- package: github.com/smartystreets/goconvey
+  version: ^1.x

@@ -1,0 +1,16 @@
+{
+  "Enable": [
+    "gofmt",
+    "goimports",
+    "gosimple",
+    "lll",
+    "misspell",
+    "unparam",
+    "unused",
+    "staticcheck"
+  ],
+  "EnableGC": true,
+  "Deadline": "10m",
+  "Vendor": true,
+  "VendoredLinters": true
+}
