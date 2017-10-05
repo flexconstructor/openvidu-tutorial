@@ -1,5 +1,5 @@
-hash: e5e507b53c2d4acd8252d4ff626f0f28ee167c13a61bf25bf532f77f93348d17
-updated: 2017-09-29T17:08:09.414016374Z
+hash: 4a6e18eb00b37d868a22bcd802f84739639529861b622bcfbee6805ce66897b1
+updated: 2017-10-04T16:53:06.649086266Z
 imports:
 - name: github.com/gin-contrib/sse
   version: 22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae
@@ -12,6 +12,12 @@ imports:
   version: 130e6b02ab059e7b717a096f397c5b60111cae74
   subpackages:
   - proto
+- name: github.com/gorilla/context
+  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
+- name: github.com/gorilla/securecookie
+  version: e59506cc896acb7f7bf732d4fdf5e25f7ccd8983
+- name: github.com/gorilla/sessions
+  version: ca9ada44574153444b00d3fd9c8559e4cc95f896
 - name: github.com/mattn/go-isatty
   version: a5cdd64afdee435007ee3e9f6ed4684af949d568
 - name: github.com/ugorji/go

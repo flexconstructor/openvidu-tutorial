@@ -43,6 +43,9 @@
 		<div id="not-logged" class="vertical-center">
 			<div id="img-div"><img src="images/openvidu_grey_bg_transp_cropped.png" /></div>
 			<form class="form-group jumbotron" action="/dashboard" method="post">
+			  <div >
+                    {{.error}}
+              </div>
 				<p>
 					<label>User</label>
 					<input class="form-control" type="text" name="user" required="true"></input>

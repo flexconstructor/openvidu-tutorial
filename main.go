@@ -1,17 +1,10 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"github.com/flexconstructor/openvidu-tutorial/route"
 )
 
 func main() {
-	router := gin.Default()
-	router.GET("/", index)
+	router := route.InitRouter()
 	router.Run()
-}
-
-func index(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, "Hallo gin")
 }

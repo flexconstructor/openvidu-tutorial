@@ -1,9 +1,24 @@
 version: '3'
 
 services:
+  openvidu-server-kms:
+    container_name: openvidu-server-kms
+    image: openvidu/openvidu-server-kms:1.1.0
+    ports:
+      - "8443:8443"
+    environment:
+      - KMS_STUN_IP=stun.l.google.com
+      - KMS_STUN_PORT=19302
+      - openvidu.secret=MY_SECRET
   streaming-api:
     container_name: openvidu-tutorial
     image: flexconstructor/openvidu-tutorial
     build: .
     ports:
       - "8081:8081"
+    volumes:
+      - ./resources:/resources
+    ports:
+      - "8080:8080"
+    links:
+      - "openvidu-server-kms"

@@ -67,11 +67,12 @@
 <script th:inline="javascript">
 
 	// Get all the attributes from the template in Thymeleaf style
-	var sessionId = [[${sessionId}]];
-	var token = [[${token}]];
-	var nickName = [[${nickName}]];
-	var userName = [[${userName}]];
-	var sessionName = [[${sessionName}]];
+
+	var sessionId = {{.sessionId}};
+	var token = {{.token}};
+	var nickName = {{.nickName}};
+	var userName = {{.userName}};
+	var sessionName = {{.sessionName}};
 
 	console.warn('Request of SESSIONID and TOKEN gone WELL (SESSIONID:' +
 		sessionId + ", TOKEN:" + token + ")");
