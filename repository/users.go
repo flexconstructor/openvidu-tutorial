@@ -36,7 +36,7 @@ func (r *Users) Get(username string) (*entity.User, error) {
 	user, ok := r.users[username]
 	switch {
 	case !ok:
-		return nil, errors.New("Login incorrect")
+		return nil, errors.New("login incorrect")
 	default:
 		return user, nil
 	}

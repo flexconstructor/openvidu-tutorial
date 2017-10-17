@@ -1,4 +1,4 @@
-VERSION ?= 2.0.0-dev
+VERSION ?= 1.0.0-dev
 
 IMAGE_NAME := flexconstructor/openvidu-tutorial
 
@@ -185,12 +185,12 @@ ifeq ($(docker),yes)
 			goconvey \
 				-host 0.0.0.0 -port $(goconvey-port) \
 				-cover \
-				-excludedDirs=".git,vendor_tools,vendor,node_modules,_cache"
+				-excludedDirs=".git,vendor_tools,vendor,node_modules,_cache,resources"
 else
 	goconvey \
 		-port $(goconvey-port) \
 		-cover \
-		-excludedDirs=".git,vendor_tools,vendor,node_modules,_cache"
+		-excludedDirs=".git,vendor_tools,vendor,node_modules,_cache,resources"
 endif
 
 

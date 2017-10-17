@@ -13,37 +13,34 @@ import (
 // InitRouter initializes new HTTP router that performs routing of HTTP
 // requests.
 // Initializes all controllers.
-func InitRouter() *gin.Engine {
+func InitRouter(HTTPClient service.HTTPClient) *gin.Engine {
 	router := gin.Default()
-	router.LoadHTMLGlob("/resources/templates/*.tmpl")
-	router.Static("/images", "resources/static/images")
-	router.StaticFile("/style.css", "resources/static//style.css")
-	router.StaticFile("/openvidu-browser-1.1.0.js",
-		"resources/static/openvidu-browser-1.1.0.js")
 	store := sessions.NewCookieStore([]byte("secret"))
-	repo := repository.NewUsersRepository()
-	repo.Add("publisher1", "pass", 1)
-	repo.Add("publisher2", "pass", 1)
-	repo.Add("subscriber", "pass", 2)
+	userRepo := repository.NewUsersRepository()
+	userRepo.Add("publisher1", "pass", 1)
+	userRepo.Add("publisher2", "pass", 1)
+	userRepo.Add("subscriber", "pass", 0)
+
 	s := &controller.Session{
 		Store: store,
 		UserAction: &action.User{
-			UsersRepo: repo,
+			UsersRepo: userRepo,
 		},
 	}
 	router.Use(s.Check)
+	router.Use(renderHTML)
 
 	c := &controller.Pages{
 		SessionStore: store,
 		LoginAction: &action.Login{
-			UserRepo: repo,
+			UserRepo: userRepo,
+		},
+		SessionAction: &action.Session{
+			UserRepo:    userRepo,
+			SessionRepo: repository.NewSessionsRepository(),
 		},
 		OpenViDuService: &service.Service{
-			OpenViDu: &service.Client{
-				OpenViDuURL: "https://openvidu-server-kms:8443",
-				Login:       "OPENVIDUAPP",
-				Password:    "MY_SECRET",
-			},
+			OpenViDu: HTTPClient,
 		},
 	}
 	router.NoMethod(c.Index)
@@ -51,6 +48,6 @@ func InitRouter() *gin.Engine {
 	router.GET("/", c.Index)
 	router.POST("/dashboard", c.Dashboard)
 	router.POST("/session", c.Session)
-
+	router.POST("/leave-session", c.Leave)
 	return router
 }

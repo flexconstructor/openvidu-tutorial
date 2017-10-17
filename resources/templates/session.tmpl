@@ -37,10 +37,11 @@
 		<div id="logged">
 			<div id="session">
 				<div id="session-header">
-					<h1 th:text="${sessionName}" id="session-title"></h1>
+
+					<h1 id="session-title">{{.sessionName}}</h1>
 					<form action="/leave-session" method="post">
-						<input type="hidden" name="session-name" th:value="${sessionName}"></input>
-						<input type="hidden" name="token" th:value="${token}"></input>
+						<input type="hidden" name="session-name" value="{{.sessionName}}"></input>
+						<input type="hidden" name="token" value="{{.token}}"></input>
 						<button id="buttonLeaveSession" class="btn btn-large btn-danger" type="submit" onclick="leaveSession()">
 							Leave session</button>
 					</form>
@@ -54,7 +55,6 @@
 			</div>
 		</div>
 	</div>
-
 	<footer class="footer">
 		<div class="container">
 			<div class="text-muted">OpenVidu © 2017</div>

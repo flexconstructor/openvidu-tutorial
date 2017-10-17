@@ -29,18 +29,16 @@ func (mw *Session) Check(ctx *gin.Context) {
 
 	e := s.Values["error"]
 	if e != nil {
-		ctx.Error(errors.New(e.(string)))
+		ctx.Error(e.(error))
 		return
 	}
-
-	username, ok := s.Values["loggedUser"].(string)
+	username, ok := s.Values["loggedUser"]
 
 	if !ok {
 		ctx.Error(errors.New("user not found"))
 		return
 	}
-
-	user, err := mw.UserAction.Get(username)
+	user, err := mw.UserAction.Get(username.(string))
 	if err != nil {
 		ctx.Error(errors.New("user not found"))
 		return

@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -56,7 +55,6 @@ func (c *Client) Post(
 	}
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Printf("Response error: %s", err.Error())
 		return nil, err
 	}
 	defer resp.Body.Close()

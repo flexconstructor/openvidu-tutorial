@@ -36,7 +36,7 @@ func (s *Service) GetMediaSession(
 	sessionStr, ok := session.(string)
 
 	if !ok {
-		return "", errors.New("Can not cast session ID to string")
+		return "", errors.New("can not cast session ID to string")
 	}
 	return sessionStr, nil
 }
