@@ -1,0 +1,11 @@
+/.idea
+*.iml
+
+/_build
+/_cache
+/_docs
+/_release
+
+/vendor
+
+*.coverprofile
